@@ -890,16 +890,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Designer" />
-    <Folder Include="Dom\ClassBrowser" />
-    <Folder Include="Editor\CodeCompletion\Images" />
-    <Folder Include="Editor\ContextActions" />
-    <Folder Include="Debugging" />
-    <Folder Include="Project\TargetFrameworks" />
-    <Folder Include="Src\Editor\Dialogs" />
-    <Folder Include="Templates" />
-    <Folder Include="Project\Configuration" />
-    <Folder Include="Workbench\DisplayBinding" />
     <Page Include="Editor\Bookmarks\BookmarkPadContent.xaml" />
     <Page Include="Editor\CodeCompletion\CodeCompletionOptionPanel.xaml" />
     <Page Include="Src\Editor\Dialogs\RenameSymbolDialog.xaml" />
@@ -974,27 +964,6 @@
       <Name>ICSharpCode.Core</Name>
       <Private>False</Private>
     </ProjectReference>
-    <Folder Include="Dom" />
-    <Folder Include="Editor" />
-    <Folder Include="Editor\Bookmarks" />
-    <Folder Include="Util" />
-    <Folder Include="Project" />
-    <Folder Include="Parser" />
-    <Folder Include="Project\Build" />
-    <Folder Include="Services" />
-    <Folder Include="WinForms" />
-    <Folder Include="Workbench" />
-    <Folder Include="Src\Gui\Dialogs\ReferenceDialog\ServiceReference" />
-    <Folder Include="Refactoring" />
-    <Folder Include="Src\Project\Behaviors" />
-    <Folder Include="Project\PortableLibrary" />
-    <Folder Include="themes" />
-    <Folder Include="Src\Editor\AvalonEdit" />
-    <Folder Include="Editor\CodeCompletion" />
-    <Folder Include="Src\Editor\Commands" />
-    <Folder Include="Editor\Search" />
-    <Folder Include="Src\Gui\Pads\TaskList" />
-    <Folder Include="Src\Services\NavigationService" />
     <ProjectReference Include="..\..\ICSharpCode.Core.Presentation\ICSharpCode.Core.Presentation.csproj">
       <Project>{7E4A7172-7FF5-48D0-B719-7CD959DD1AC9}</Project>
       <Name>ICSharpCode.Core.Presentation</Name>
@@ -1015,6 +984,7 @@
     <Page Include="Src\Gui\Dialogs\TreeViewOptionsDialog.xaml" />
     <Page Include="Src\Project\Converter\UpgradeView.xaml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <Import Project="PostBuildEvent.proj" />
 </Project>

@@ -41,6 +41,8 @@
     <OutputPath>..\..\..\..\AddIns\Debugger\</OutputPath>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,6 +60,12 @@
     <StartProgram>..\..\..\..\bin\SharpDevelop.exe</StartProgram>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Be.Windows.Forms.HexBox, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Be.Windows.Forms.HexBox.1.6.1\lib\net40\Be.Windows.Forms.HexBox.dll</HintPath>
+    </Reference>
+    <Reference Include="ByteSize, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\ByteSize.2.0.0\lib\net45\ByteSize.dll</HintPath>
+    </Reference>
     <Reference Include="GraphSharp">
       <HintPath>..\..\..\Libraries\GraphSharp\GraphSharp.dll</HintPath>
       <Private>False</Private>
@@ -67,6 +75,9 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\NLog.4.6.4\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
     </Reference>
@@ -81,11 +92,21 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xaml" />
@@ -94,6 +115,9 @@
     </Reference>
     <Reference Include="WindowsFormsIntegration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WPFToolkit, Version=3.5.40128.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\bin\WPFToolkit.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +147,96 @@
     </Compile>
     <Compile Include="Pads\ClassBrowserSupport.cs" />
     <Compile Include="Pads\DebuggerDotCompletion.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Dialogs\HexViewerDialog.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Dialogs\HexViewerDialog.designer.cs">
+      <DependentUpon>HexViewerDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Dialogs\ModuleDetailsDialog.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Dialogs\ModuleDetailsDialog.designer.cs" />
+    <Compile Include="Pads\DiagnosisPad\ProcessCpuCounter.cs" />
+    <Compile Include="Pads\DiagnosisPad\ChartCPU.xaml.cs">
+      <DependentUpon>ChartCPU.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\DiagnosisPad.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\DumpCreator.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Controls\ListViewContextMenu.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Controls\ListViewEx.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Controls\ListViewSubItemEx.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Controls\MinidumpListView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Controls\ToolStripCheckBoxMenuItem.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Controls\WizardControl.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\ShowSnapshotPageCommand.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\SnapshotControl.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\SnapshotControl.Designer.cs">
+      <DependentUpon>SnapshotControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\SnapshotPageViewContent.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Utilities\ListViewColumnSorter.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Utilities\MiniDumpHelper.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\BaseViewControl.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\BaseViewControl.designer.cs">
+      <DependentUpon>BaseViewControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ExceptionStreamView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ExceptionStreamView.designer.cs">
+      <DependentUpon>ExceptionStreamView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\HandleDataView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\HandleDataView.designer.cs">
+      <DependentUpon>HandleDataView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryInfoView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryInfoView.designer.cs">
+      <DependentUpon>MemoryInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryList64View.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryList64View.designer.cs">
+      <DependentUpon>MemoryList64View.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryListView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryListView.designer.cs">
+      <DependentUpon>MemoryListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MiscInfoView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\MiscInfoView.designer.cs">
+      <DependentUpon>MiscInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ModulesView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ModulesView.designer.cs">
+      <DependentUpon>ModulesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\SummaryView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\SummaryView.designer.cs">
+      <DependentUpon>SummaryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\SystemInfoView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\SystemInfoView.designer.cs">
+      <DependentUpon>SystemInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\SystemMemoryInfoView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\SystemMemoryInfoView.designer.cs">
+      <DependentUpon>SystemMemoryInfoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadInfoListView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadInfoListView.designer.cs">
+      <DependentUpon>ThreadInfoListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadListView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadListView.designer.cs">
+      <DependentUpon>ThreadListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadNamesView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadNamesView.designer.cs">
+      <DependentUpon>ThreadNamesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\UnloadedModulesView.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\Explorer\Views\UnloadedModulesView.designer.cs">
+      <DependentUpon>UnloadedModulesView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pads\DiagnosisPad\Dump\ProcessExplorer.cs" />
+    <Compile Include="Pads\DiagnosisPad\Dump\ProcessInfoValue.cs" />
+    <Compile Include="Pads\DiagnosisPad\MemorySnap.cs" />
+    <Compile Include="Pads\DiagnosisPad\EventsTracker.cs" />
     <Compile Include="Pads\WatchPadCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Options\DebuggingOptions.cs" />
@@ -234,6 +348,58 @@
     <Compile Include="Visualizers\Utils\Util.cs" />
     <Compile Include="Visualizers\Utils\TreeFlattener.cs" />
     <Compile Include="Visualizers\Utils\TypeResolver.cs" />
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Dialogs\HexViewerDialog.resx">
+      <DependentUpon>HexViewerDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Dialogs\ModuleDetailsDialog.resx" />
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\SnapshotControl.resx">
+      <DependentUpon>SnapshotControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\BaseViewControl.resx">
+      <DependentUpon>BaseViewControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\ExceptionStreamView.resx">
+      <DependentUpon>ExceptionStreamView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\HandleDataView.resx">
+      <DependentUpon>HandleDataView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryInfoView.resx">
+      <DependentUpon>MemoryInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryList64View.resx">
+      <DependentUpon>MemoryList64View.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\MemoryListView.resx">
+      <DependentUpon>MemoryListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\MiscInfoView.resx">
+      <DependentUpon>MiscInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\ModulesView.resx">
+      <DependentUpon>ModulesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\SummaryView.resx">
+      <DependentUpon>SummaryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\SystemInfoView.resx">
+      <DependentUpon>SystemInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\SystemMemoryInfoView.resx">
+      <DependentUpon>SystemMemoryInfoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadInfoListView.resx">
+      <DependentUpon>ThreadInfoListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadListView.resx">
+      <DependentUpon>ThreadListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\ThreadNamesView.resx">
+      <DependentUpon>ThreadNamesView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pads\DiagnosisPad\Dump\Explorer\Views\UnloadedModulesView.resx">
+      <DependentUpon>UnloadedModulesView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Service\DebuggeeExceptionForm.resx">
       <DependentUpon>DebuggeeExceptionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -294,39 +460,50 @@
       <Private>False</Private>
       <SpecificVersion>False</SpecificVersion>
     </ProjectReference>
+    <Content Include="Pads\DiagnosisPad\Dump\checksum.txt" />
+    <Content Include="Pads\DiagnosisPad\Dump\Explorer\Images\Steams\ActiveDocumentHost_6234.png" />
+    <Content Include="Pads\DiagnosisPad\Dump\Explorer\Images\Steams\Assembly_6212.png" />
+    <Content Include="Pads\DiagnosisPad\Dump\Explorer\Images\Steams\DialogID_6220_16x.png" />
+    <Content Include="Pads\DiagnosisPad\Dump\Explorer\Images\Steams\Exception.png" />
+    <Content Include="Pads\DiagnosisPad\Dump\Explorer\Images\Steams\Map_624.png" />
+    <Content Include="Pads\DiagnosisPad\Dump\Explorer\Images\Steams\MemoryWindow_6537.png" />
+    <Content Include="Pads\DiagnosisPad\Dump\Explorer\Images\Steams\thread_16xLG.png" />
+    <Content Include="Pads\DiagnosisPad\Dump\ProcDump\Eula.txt" />
+    <Content Include="Pads\DiagnosisPad\Dump\ProcDump\procdump.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pads\DiagnosisPad\Dump\ProcDump\procdump64a.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pads\DiagnosisPad\Dump\PsSuspend\Eula.txt" />
+    <Content Include="Pads\DiagnosisPad\Dump\PsSuspend\pssuspend.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pads\DiagnosisPad\Dump\PsSuspend\pssuspend64.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Pads\DiagnosisPad\Dump\PsSuspend\psversion.txt" />
     <Content Include="PostBuildEvent.proj" />
     <ProjectReference Include="..\..\..\Main\ICSharpCode.SharpDevelop.Widgets\Project\ICSharpCode.SharpDevelop.Widgets.csproj">
       <Project>{8035765F-D51F-4A0C-A746-2FD100E19419}</Project>
       <Name>ICSharpCode.SharpDevelop.Widgets</Name>
       <Private>False</Private>
     </ProjectReference>
+    <ProjectReference Include="..\Debugger.MiniDump\Debugger.MiniDump.csproj">
+      <Project>{d77a335b-8028-41c0-b29e-cb5900d69800}</Project>
+      <Name>Debugger.MiniDump</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Breakpoints" />
-    <Folder Include="Tooltips" />
-    <Folder Include="Visualizers" />
-    <Folder Include="Visualizers\Commands" />
-    <Folder Include="Visualizers\Common" />
-    <Folder Include="Visualizers\GraphVisualizer" />
-    <Folder Include="Visualizers\GraphVisualizer\Presentation" />
-    <Folder Include="Visualizers\GraphVisualizer\ExpandedPaths" />
-    <Folder Include="Visualizers\GraphVisualizer\Layout" />
-    <Folder Include="Visualizers\GraphVisualizer\Layout\SplineRouting" />
-    <Folder Include="Visualizers\GraphVisualizer\Layout\SplineRouting\RouteGraph" />
-    <Folder Include="Visualizers\GraphVisualizer\Layout\SplineRouting\ShortestPath" />
-    <Folder Include="Visualizers\GraphVisualizer\Layout\Tree" />
-    <Folder Include="Visualizers\GraphVisualizer\Layout\TreeModel" />
-    <Folder Include="Visualizers\GraphVisualizer\ObjectGraph" />
-    <Folder Include="Visualizers\GraphVisualizer\ObjectGraph\TreeModel" />
-    <Folder Include="Visualizers\GridVisualizer" />
-    <Folder Include="Visualizers\Presentation" />
-    <Folder Include="Visualizers\TextVisualizer" />
-    <Folder Include="Visualizers\Utils" />
     <Page Include="Breakpoints\BreakpointEditorPopup.xaml" />
     <Page Include="Options\ChooseExceptionsDialog.xaml" />
     <Page Include="Options\DebuggingOptionsPanel.xaml" />
     <Page Include="Options\DebuggingSymbolsPanel.xaml" />
     <Page Include="Pads\CommonResources.xaml" />
+    <Page Include="Pads\DiagnosisPad\ChartCPU.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Service\ExecuteProcessWindow.xaml" />
     <Page Include="Tooltips\DebuggerTooltipControl.xaml" />
     <Page Include="Tooltips\VisualizerPicker.xaml" />
@@ -342,7 +519,6 @@
       <Name>ICSharpCode.Core.WinForms</Name>
       <Private>False</Private>
     </ProjectReference>
-    <Folder Include="NRefactory" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -371,6 +547,12 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <None Include="Pads\DiagnosisPad\Dump\PsSuspend\Pstools.chm" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSHARP.Targets" />
   <Import Project="PostBuildEvent.proj" />
 </Project>

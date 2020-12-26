@@ -17,6 +17,7 @@
 // DEALINGS IN THE SOFTWARE.
 using System;
 using System.Diagnostics;
+using System.IO;
 using ICSharpCode.Core;
 using ICSharpCode.SharpDevelop.Editor;
 using ICSharpCode.SharpDevelop.Gui;
@@ -26,6 +27,7 @@ namespace ICSharpCode.SharpDevelop.Debugging
 {
 	public abstract class BaseDebuggerService : IDebuggerService
 	{
+		private const string DUMP_FOLDER = @"AddIns\Debugger\Pads\DiagnosisPad\Dump\temp\";
 		protected BaseDebuggerService()
 		{
 			SD.ProjectService.SolutionOpened += delegate {
@@ -60,7 +62,12 @@ namespace ICSharpCode.SharpDevelop.Debugging
 		{
 			debuggerStarted = true;
 			if (DebugStarted != null) {
-				DebugStarted(this, e);
+				
+				bool isCleaned = CleanTempSnapshotFolder();
+				if (isCleaned)
+					DebugStarted(this, e);
+				else
+					MessageService.ShowError("Error deleting snapshots dump files on 'temp' folder");
 			}
 		}
 
@@ -196,6 +203,30 @@ namespace ICSharpCode.SharpDevelop.Debugging
 		{
 			EnsureDebugCategory();
 			debugCategory.AppendText(msg);
+		}
+
+		public static bool CleanTempSnapshotFolder()
+		{
+			try
+			{
+				string tempFolder = Path.Combine(Path.Combine(Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), @".."), DUMP_FOLDER);
+				if (!Directory.Exists(tempFolder))
+				{
+					Directory.CreateDirectory(tempFolder);
+				}	
+				else
+				{
+					System.IO.DirectoryInfo tempDirInfo = new DirectoryInfo(tempFolder);
+					foreach (System.IO.FileInfo file in tempDirInfo.GetFiles()) file.Delete();
+					foreach (System.IO.DirectoryInfo subDirectory in tempDirInfo.GetDirectories()) subDirectory.Delete(true);
+				}
+
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
 		}
 
 		public abstract void ToggleBreakpointAt(ITextEditor editor, int lineNumber);

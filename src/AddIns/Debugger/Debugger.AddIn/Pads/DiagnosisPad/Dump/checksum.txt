@@ -1,0 +1,11 @@
+﻿https://docs.microsoft.com/en-gb/sysinternals/downloads/procdump
+procdump.exe
+MD5:D3763FFBFAF30BCFD866B8ED0324E7A3
+procdump64a.exe
+MD5:81B3126DF3337C7689B99556761E026B
+
+https://docs.microsoft.com/en-gb/sysinternals/downloads/pssuspend
+pssuspend.exe
+MD5:DF3D77D41EF28027B3069D39F9EE9C79
+pssuspend64.exe
+MD5:FBE9E863C6E46F75BFABA674E3BA0CDA

@@ -145,5 +145,22 @@
 		<GridViewColumn Header="{core:Localize MainWindow.Windows.Debug.Threads.Priority}" Width="120" DisplayMemberBinding="{Binding Priority}"/>
 		<GridViewColumn Header="{core:Localize MainWindow.Windows.Debug.Threads.Frozen}" Width="80" DisplayMemberBinding="{Binding Frozen}"/>
 	</GridView>
+	
+	<!-- Events -->
+	<GridView x:Key="eventsGridView" AllowsColumnReorder="False">
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.Line}" Width="100" DisplayMemberBinding="{Binding RowNumber}"/>
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.Event}" Width="300" DisplayMemberBinding="{Binding ProgramName}"/>
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.Thread}" Width="300" DisplayMemberBinding="{Binding Thread}"/>
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.Time}" Width="300" DisplayMemberBinding="{Binding Time}"/>
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.Duration}" Width="300" DisplayMemberBinding="{Binding Duration}"/>		
+	</GridView>
+
+	<!-- Memory Usage -->
+	<GridView x:Key="memoryUsageGridView" AllowsColumnReorder="False">
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.ID}" Width="100" DisplayMemberBinding="{Binding ID}"/>
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.Time}" Width="300" DisplayMemberBinding="{Binding Time}"/>
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.MemoryRange}" Width="180" DisplayMemberBinding="{Binding MemoryRange}"/>
+		<GridViewColumn Header="{core:Localize MainWindow.Windows.DiagnosticPanel.MemorySize}" Width="180" DisplayMemberBinding="{Binding MemorySize}"/>
+	</GridView>
 
 </ResourceDictionary>

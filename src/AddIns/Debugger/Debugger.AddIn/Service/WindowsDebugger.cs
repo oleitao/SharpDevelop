@@ -43,22 +43,27 @@ using ICSharpCode.SharpDevelop.Project;
 using Process = Debugger.Process;
 using StackFrame = Debugger.StackFrame;
 using TreeNode = Debugger.AddIn.TreeModel.TreeNode;
+using Debugger.AddIn.Pads.DiagnosisPad;
 
 namespace ICSharpCode.SharpDevelop.Services
 {
 	public class WindowsDebugger : BaseDebuggerService
 	{
 		public static WindowsDebugger Instance { get; set; }
-		
 		public static NDebugger  CurrentDebugger { get; private set; }
 		public static Process    CurrentProcess { get; private set; }
 		public static Thread     CurrentThread { get; set; }
 		public static StackFrame CurrentStackFrame { get; set; }
-		
+
 		public static PdbSymbolSource PdbSymbolSource = new PdbSymbolSource();
 		
 		public static Action RefreshingPads;
+
+		public static List<EventsTracker> CurrentEventTracker = new List<EventsTracker>();
+
+		public static List<MemorySnap> CurrentMemorySnap = new List<MemorySnap>();
 		
+		private Stopwatch diagnosticTracker;
 		public static void RefreshPads()
 		{
 			if (RefreshingPads != null) {
@@ -108,7 +113,7 @@ namespace ICSharpCode.SharpDevelop.Services
 		
 		public WindowsDebugger()
 		{
-			Instance = this;
+			Instance = this;			
 		}
 		
 		#region IDebugger Members
@@ -179,6 +184,9 @@ namespace ICSharpCode.SharpDevelop.Services
 				UpdateBreakpointLines();
 				
 				try {
+					diagnosticTracker = new Stopwatch();
+					diagnosticTracker.Start();
+
 					CurrentProcess = CurrentDebugger.Start(processStartInfo.FileName, processStartInfo.WorkingDirectory, processStartInfo.Arguments, this.BreakAtBeginning);
 					debugger_ProcessStarted();
 				} catch (System.Exception e) {
@@ -207,7 +215,7 @@ namespace ICSharpCode.SharpDevelop.Services
 				}
 			}
 		}
-		
+
 		public override void ShowAttachDialog()
 		{
 			using (AttachToProcessForm attachForm = new AttachToProcessForm()) {
@@ -288,6 +296,8 @@ namespace ICSharpCode.SharpDevelop.Services
 				}
 			} else {
 				CurrentProcess.Terminate();
+				CurrentEventTracker.Clear();
+				CurrentMemorySnap.Clear();
 			}
 		}
 		
@@ -301,6 +311,7 @@ namespace ICSharpCode.SharpDevelop.Services
 		public override void Continue()
 		{
 			if (CurrentProcess != null && CurrentProcess.IsPaused) {
+				diagnosticTracker.Restart();
 				CurrentProcess.AsyncContinue();
 			}
 		}
@@ -382,7 +393,7 @@ namespace ICSharpCode.SharpDevelop.Services
 					CurrentDebugger.RemoveBreakpoint(bp);
 				}
 			};
-			
+
 			if (Initialize != null) {
 				Initialize(this, null);
 			}
@@ -460,7 +471,13 @@ namespace ICSharpCode.SharpDevelop.Services
 			CurrentProcess = null;
 			CurrentThread = null;
 			CurrentStackFrame = null;
-			
+
+			if (CurrentEventTracker != null)
+				CurrentEventTracker = new List<EventsTracker>();
+
+			if (CurrentMemorySnap != null)
+				CurrentMemorySnap = new List<MemorySnap>();
+
 			UpdateBreakpointIcons();
 			RefreshPads();
 		}
@@ -604,6 +621,33 @@ namespace ICSharpCode.SharpDevelop.Services
 			RemoveCurrentLineMarker();
 			SequencePoint nextStatement = CurrentStackFrame.NextStatement;
 			if (nextStatement != null) {
+				diagnosticTracker.Stop();
+
+				double elapsedTime = 0;
+				if (CurrentEventTracker != null)
+				{
+					if (CurrentEventTracker.Count > 0)
+						double.TryParse(CurrentEventTracker[CurrentEventTracker.Count - 1].Duration, out elapsedTime);
+					else
+						elapsedTime = 0;
+
+
+				int line = nextStatement.StartLine;
+				string path = Path.GetFileName(nextStatement.Filename) + StringParser.Parse("${res:ICSharpCode.SharpDevelop.Services.WindowsDebugger.DiagnosticToolsLine}") + nextStatement.StartLine;
+				
+				TimeSpan spanDuration = new TimeSpan(diagnosticTracker.Elapsed.Ticks);
+				
+				string thread = String.Format("[{0}]", CurrentThread.ID);
+				string duration = String.Format("{0:n0}", Math.Round(Convert.ToDouble(spanDuration.TotalMilliseconds + elapsedTime), 3));
+				string time = String.Format("{0:n0}", Math.Round(Convert.ToDouble(spanDuration.TotalMilliseconds), 2));
+
+				CurrentEventTracker.Add(new EventsTracker(line, 
+														  path, 
+														  thread, 
+														  duration + StringParser.Parse("${res:ICSharpCode.SharpDevelop.Services.WindowsDebugger.DiagnosticToolsMiliseconds}"), 
+														  time.Remove(time.Length -1) + StringParser.Parse("${res:ICSharpCode.SharpDevelop.Services.WindowsDebugger.DiagnosticToolsSeconds}")));
+				}
+
 				JumpToCurrentLine(nextStatement.Filename, nextStatement.StartLine, nextStatement.StartColumn, nextStatement.EndLine, nextStatement.EndColumn);
 			}
 		}
@@ -651,7 +695,7 @@ namespace ICSharpCode.SharpDevelop.Services
 				}
 			}
 		}
-		
+
 		public override void RemoveCurrentLineMarker()
 		{
 			CurrentLineBookmark.Remove();

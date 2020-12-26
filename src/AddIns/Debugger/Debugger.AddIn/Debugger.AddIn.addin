@@ -119,6 +119,14 @@
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.ThreadsPad"
 		     defaultPosition = "Bottom, Hidden" />
 		
+		<Pad id    = "DiagnosisPad"
+		     category = "Debugger"
+		     title    = "${res:MainWindow.Windows.Debug.DiagnosticPanel}"
+		     icon     = "PadIcons.Threads"
+		     class = "ICSharpCode.SharpDevelop.Gui.Pads.DiagnosisPad.DiagnosisPad"
+		     defaultPosition = "Right, Hidden" />
+
+		
 		<Pad id    = "LocalVarPad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.LocalVariables}"

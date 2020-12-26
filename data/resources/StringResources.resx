@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -2231,7 +2231,7 @@ systems. I don't think that this needs translation.</comment>
   <data name="Dialog.Options.IDEOptions.LoadSaveOptions.WindowsRadioButton" xml:space="preserve">
     <value>Windows (CRLF)</value>
     <comment>CRLF = carriage return, line feed
-line terminator style for the 'Windows' operating 
+line terminator style for the 'Windows' operating
 system. I don't think that it needs translation.</comment>
   </data>
   <data name="Dialog.Options.IDEOptions.OutputPanel.Format" xml:space="preserve">
@@ -5967,7 +5967,7 @@ Shows the full callstack of the error.</comment>
   </data>
   <data name="NUnitPad.NUnitPadContent.TestTreeView.TestFailedMessage" xml:space="preserve">
     <value>Test case '${TestCase}' failed.</value>
-    <comment>Indicates that the test failed if the test has no error message to display. 
+    <comment>Indicates that the test failed if the test has no error message to display.
 
 Removed the end part of the original message ", reason '${Message}'" since this is often not visible in the errors list if the test case name is long.</comment>
   </data>
@@ -8178,7 +8178,7 @@ Error while starting:
     <value>Uncomment region</value>
   </data>
   <data name="_Internal.Bogus.Translation.Test1" xml:space="preserve">
-    <value>This resource is not being used. Its purpose is to test the translation database and has 
+    <value>This resource is not being used. Its purpose is to test the translation database and has
 a line break</value>
   </data>
   <data name="Dialog.Options.IDEOptions.CodeCompletion.TooltipLabel" xml:space="preserve">
@@ -8223,7 +8223,7 @@ a line break</value>
   <data name="MainWindow.Windows.TaskList.CurrentClass" xml:space="preserve">
     <value>Class/Module</value>
   </data>
-  <data name="ResourceEditor.BitmapView.UpdateIcon" xml:space="preserve">
+	<data name="ResourceEditor.BitmapView.UpdateIcon" xml:space="preserve">
     <value>Update icon ...</value>
     <comment>Text for the button that makes it possible to update the stored icon</comment>
   </data>
@@ -8281,6 +8281,60 @@ a line break</value>
   </data>
   <data name="AddIns.Debugger.Console.DeleteHistory" xml:space="preserve">
     <value>Delete history</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.MemoryUsage" xml:space="preserve">
+    <value>Memory Usage</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.CPUUsage" xml:space="preserve">
+    <value>CPU Usage</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.ShowEvents" xml:space="preserve">
+    <value>Show Events</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.TakeSnapshot" xml:space="preserve">
+    <value>Take Snapshot</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.RecordCPUProfile" xml:space="preserve">
+    <value>Record CPU Profile</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.ViewHeap" xml:space="preserve">
+    <value>View Heap</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.HandleCount" xml:space="preserve">
+    <value>Handle Count</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.PagedMemory" xml:space="preserve">
+    <value>Paged Memory</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.PeakPagedMemory" xml:space="preserve">
+    <value>Peak Paged Memory</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.TotalMemory" xml:space="preserve">
+    <value>Total Memory</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.PeakWorkingSet" xml:space="preserve">
+    <value>Peak Working Set</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.WorkingSet" xml:space="preserve">
+    <value>Working Set</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.MemoryMB" xml:space="preserve">
+    <value>Memory (MB)</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.CPUPercentage" xml:space="preserve">
+    <value>CPU (%)</value>
+  </data>
+  <data name="AddIns.Debugger.Diagnosis.DeleteSnapshot" xml:space="preserve">
+    <value>Need to run application before take a snapshot!</value>
   </data>
   <data name="MainWindow.Windows.OutputWindow.TextTooLong" xml:space="preserve">
     <value>&lt;Text was truncated because it was too long&gt;</value>
@@ -8445,5 +8499,53 @@ Press Esc to cancel this operation.</value>
   </data>
   <data name="ICSharpCode.WpfDesign.AddIn.Options.EnableAppXamlParsing" xml:space="preserve">
     <value>Enable App.xaml parsing</value>
+  </data>
+  <data name="MainWindow.Windows.Debug.DiagnosticPanel" xml:space="preserve">
+    <value>Diagnostic Panel</value>
+  </data>
+	<data name="ICSharpCode.SharpDevelop.Services.WindowsDebugger.DiagnosticToolsLine" xml:space="preserve">
+    <value> line </value>
+  </data>
+	<data name="ICSharpCode.SharpDevelop.Services.WindowsDebugger.DiagnosticToolsMiliseconds" xml:space="preserve">
+    <value>ms</value>
+  </data>
+	<data name="ICSharpCode.SharpDevelop.Services.WindowsDebugger.DiagnosticToolsSeconds" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="MainWindow.Windows.DiagnosticPanel.Summary" xml:space="preserve">
+    <value>Summary</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.Events" xml:space="preserve">
+    <value>Events</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.MemoryUsage" xml:space="preserve">
+    <value>Memory Usage</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.CPU" xml:space="preserve">
+    <value>CPU Usage</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.Line" xml:space="preserve">
+    <value>Line</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.Event" xml:space="preserve">
+    <value>Event</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.Thread" xml:space="preserve">
+    <value>Thread</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.MemoryRange" xml:space="preserve">
+    <value>Memory Range (Diff)</value>
+  </data>
+	<data name="MainWindow.Windows.DiagnosticPanel.MemorySize" xml:space="preserve">
+    <value>Memory Size (Diff)</value>
   </data>
 </root>

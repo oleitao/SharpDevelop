@@ -142,8 +142,6 @@
     <Compile Include="Src\Util\WeakCollection.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Src\Services\LoggingService" />
-    <Folder Include="Src\Services\ResourceService" />
     <Content Include="..\..\..\..\data\schemas\AddIn.xsd">
       <Link>Src\AddInTree\AddIn\AddIn.xsd</Link>
     </Content>
