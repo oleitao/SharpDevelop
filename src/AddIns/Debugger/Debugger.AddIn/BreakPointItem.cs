@@ -27,12 +27,6 @@ namespace Debugger.AddIn
 			this.Time = duration.ToString();
 			this.Duration = duration.ToString();
 			this.Frozen = ResourceService.GetString(thread.Last().Suspended ? "Global.Yes" : "Global.No");
-
-			//this.Thread = thread;
-			//this.ID = thread.ID;
-			//this.Name = thread.Name;
-			//this.Priority = PriorityToString(thread.Priority);
-
 		}
 	}
 }

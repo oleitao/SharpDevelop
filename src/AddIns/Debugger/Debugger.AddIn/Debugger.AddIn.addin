@@ -3,11 +3,11 @@
        copyright="prj:///doc/copyright.txt"
        description="SharpDevelop Managed Debugger"
        addInManagerHidden = "preinstalled">
-	
+
 	<Manifest>
 		<Identity name = "ICSharpCode.Debugger"/>
 	</Manifest>
-	
+
 	<Runtime>
 		<Import assembly=":ICSharpCode.SharpDevelop" />
 		<Import assembly="Debugger.AddIn.dll">
@@ -16,12 +16,12 @@
 		</Import>
 		<Import assembly="Debugger.Core.dll"/>
 	</Runtime>
-	
+
 	<Path name="/SharpDevelop/Services">
 		<Service id="ICSharpCode.SharpDevelop.Debugging.IDebuggerService"
 		         class="ICSharpCode.SharpDevelop.Services.WindowsDebugger" />
 	</Path>
-	
+
 	<Path name = "/SharpDevelop/ViewContent/TextEditor/ContextMenu">
 		<Condition name = "IsProcessRunning" isdebugging="True">
 			<Condition name = "IsProcessRunning" isdebugging="True" isprocessrunning="False">
@@ -58,7 +58,7 @@
 			</ComplexCondition>
 		</Condition>
 	</Path>
-	
+
 	<Path name="/SharpDevelop/Workbench/MainMenu/Debug">
 		<Condition name = "IsProcessRunning" isdebugging="False" action="Disable">
 			<MenuItem id = "DebugExecutable"
@@ -80,7 +80,7 @@
 			          class = "Debugger.AddIn.AddWatchExpressionCommand"/>
 		</Condition>
 	</Path>
-	
+
 	<Path name="/SharpDevelop/Pads/ClassBrowser/Toolbar">
 		<Condition name = "IsProcessRunning" isdebugging="False" action="Disable">
 			<ToolbarItem id = "DebugExecutable"
@@ -89,7 +89,7 @@
 			             class = "Debugger.AddIn.DebugExecutableMenuCommand"/>
 		</Condition>
 	</Path>
-	
+
 	<Path name = "/SharpDevelop/Workbench/Pads">
 		<Pad id    = "BreakPointsPad"
 		     category = "Debugger"
@@ -97,28 +97,28 @@
 		     icon     = "PadIcons.BreakPoints"
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.BreakPointsPad"
 		     defaultPosition = "Bottom, Hidden" />
-		
+
 		<Pad id    = "CallStackPad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.CallStack}"
 		     icon     = "PadIcons.CallStack"
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.CallStackPad"
 		     defaultPosition = "Bottom, Hidden" />
-		
+
 		<Pad id    = "LoadedModulesPad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.Modules}"
 		     icon     = "PadIcons.LoadedModules"
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.LoadedModulesPad"
 		     defaultPosition = "Bottom, Hidden" />
-		
+
 		<Pad id    = "ThreadsPad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.Threads}"
 		     icon     = "PadIcons.Threads"
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.ThreadsPad"
 		     defaultPosition = "Bottom, Hidden" />
-		
+
 		<Pad id    = "DiagnosisPad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.DiagnosticPanel}"
@@ -126,21 +126,20 @@
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.DiagnosisPad.DiagnosisPad"
 		     defaultPosition = "Right, Hidden" />
 
-		
 		<Pad id    = "LocalVarPad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.LocalVariables}"
 		     icon     = "PadIcons.LocalVariables"
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.LocalVarPad"
 		     defaultPosition = "Bottom, Hidden" />
-		
+
 		<Pad id    = "ConsolePad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.Console}"
 		     icon     = "PadIcons.Output"
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.ConsolePad"
 		     defaultPosition = "Bottom, Hidden" />
-		
+
 		<Pad id    = "WatchPad"
 		     category = "Debugger"
 		     title    = "${res:MainWindow.Windows.Debug.Watch}"
@@ -148,7 +147,7 @@
 		     class = "ICSharpCode.SharpDevelop.Gui.Pads.WatchPad"
 		     defaultPosition = "Bottom, Hidden" />
 	</Path>
-	
+
 	<Path name = "/SharpDevelop/Dialogs/OptionsDialog">
 		<OptionPanel id    = "Debugging"
 		             label = "${res:Dialog.Options.IDEOptions.Debugging}"
@@ -156,54 +155,54 @@
 			<OptionPanel id    = "General"
 			             label = "${res:Dialog.Options.IDEOptions.General}"
 			             class = "Debugger.AddIn.Options.DebuggingOptionsPanel"/>
-			
+
 			<OptionPanel id    = "Symbols"
 			             label = "${res:Dialog.Options.IDEOptions.Debugging.Symbols}"
 			             class = "ICSharpCode.SharpDevelop.Gui.OptionPanels.DebuggingSymbolsPanel"/>
 		</OptionPanel>
 	</Path>
-	
+
 	<Path name="/SharpDevelop/Pads/ConsolePad/ToolBar">
 		<Include id="StandardCommands" path="/SharpDevelop/Pads/CommonConsole/ToolBar" />
 	</Path>
-	
+
 	<Path name="/SharpDevelop/Services/DebuggerService/Visualizers">
 		<Class class="Debugger.AddIn.Visualizers.TextVisualizerDescriptor" />
 		<Class class="Debugger.AddIn.Visualizers.XmlVisualizerDescriptor" />
 		<Class class="Debugger.AddIn.Visualizers.ObjectGraphVisualizerDescriptor" />
 		<Class class="Debugger.AddIn.Visualizers.GridVisualizerDescriptor" />
 	</Path>
-	
+
 	<Path name="/SharpDevelop/TreeNodeFactories">
 		<Class id="DebuggerTreeNodesFactory"
 		       class="ICSharpCode.SharpDevelop.Gui.Pads.DebuggerTreeNodesFactory" />
 	</Path>
-	
+
 	<Path name = "/SharpDevelop/Services/DebuggerService/ModuleContextMenu">
 		<MenuItem id = "AddModuleToWorkspace"
 		          label = "${res:MainWindow.Windows.ClassBrowser.AddToWorkspace}"
 		          icon = "Icons.16x16.AssemblyFromFile"
 		          class = "ICSharpCode.SharpDevelop.Gui.Pads.AddModuleToWorkspaceCommand"/>
 	</Path>
-	
+
 	<Path name="/AddIns/Debugger/Tooltips/ContextMenu/TreeNode">
 		<MenuItem id="Copy"
 		          label="${res:MainWindow.Windows.Debug.LocalVariables.CopyToClipboard}"
 		          icon="Icons.16x16.CopyIcon"
 		          class="Debugger.AddIn.TreeModel.CopyCommand" />
 	</Path>
-	
+
 	<Path name="/AddIns/Debugger/Tooltips/ContextMenu/ErrorNode">
 		<MenuItem id="ShowFullError"
 		          label="${res:MainWindow.Windows.Debug.LocalVariables.ShowFullError}"
 		          class="Debugger.AddIn.TreeModel.ShowFullErrorCommand" />
 		<Include path="/AddIns/Debugger/Tooltips/ContextMenu/TreeNode" />
 	</Path>
-	
+
 	<Path name="/AddIns/Debugger/Tooltips/ContextMenu/ValueNode">
 		<Include path="/AddIns/Debugger/Tooltips/ContextMenu/TreeNode" />
 	</Path>
-	
+
 	<Path name="/SharpDevelop/Pads/WatchPad/ToolBar">
 		<ToolbarItem id="AddWatch"
 		             icon="Icons.16x16.WatchAdd"

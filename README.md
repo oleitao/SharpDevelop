@@ -75,7 +75,7 @@ Looking for the tech notes (Fine Art of Commenting, Coding Style Guide, and more
 * [David Srbecky](https://github.com/dsrbecky)(Debugger)
 * [Siegfried Pammer](https://github.com/siegfriedpammer)
 * [Peter Forstmeier]( https://github.com/PeterForstmeier)(#Develop Reports)	
-* [Oliveira Leitão]( https://github.com/leitaoprojects)(#Diagnostic Tool)	
+* [O. Leitão](https://github.com/oleitao)(#Diagnostic Tool)	
 
 ### Non-Developers
 

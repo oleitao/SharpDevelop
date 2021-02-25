@@ -2366,24 +2366,6 @@
 		          icon = "Icons.16x16.CopyIcon"
 		          command = "Copy"/>
 	</Path>
-
-
-	<Path name="/SharpDevelop/Pads/DiagnosticPanel/Toolbar">
-
-	</Path>
-
-	<Path name="/SharpDevelop/Pads/DiagnosticPanel/DiagnosticPanelDiagnosticContextMenu">
-		<MenuItem id = "Copy"
-		          label = "${res:XML.MainMenu.EditMenu.Copy}"
-		          type = "Item"
-		          icon = "Icons.16x16.CopyIcon"
-		          command = "Copy"/>
-	</Path>
-	<Path name="/SharpDevelop/Pads/DiagnosticPanel/TabControl">
-		<TabControl id = "TabControlScope"
-		             class = "ICSharpCode.SharpDevelop.Gui.DiagnosticPanelSelectScopeTabControl"
-		             type = "Custom"/>
-	</Path>
 	
 	<Path name="/SharpDevelop/Pads/CommonConsole/ToolBar">
 		<ToolbarItem id = "ClearConsole"
